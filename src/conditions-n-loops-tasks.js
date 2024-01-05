@@ -202,7 +202,6 @@ function convertNumberToString(numberStr) {
         break;
 
       default:
-        console.log('nothing happens');
     }
     if (i !== numberStr.length - 1) {
       result += ' ';
@@ -242,12 +241,8 @@ function isPalindrome(/* str */) {
  *  'qwerty', 'p'     => -1
  */
 function getIndexOf(str, letter) {
-  console.debug(`str = ${str}`);
-  console.debug(`letter = ${letter}`);
   for (let i = 0; i < str.length; i += 1) {
     if (str[i] === letter) {
-      console.debug(`i = ${i}`);
-      console.debug(`-------------------`);
       return i;
     }
   }
