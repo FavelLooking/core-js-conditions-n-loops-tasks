@@ -222,8 +222,13 @@ function convertNumberToString(numberStr) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  for (let i = 0; i < str.length / 2; i += 1) {
+    if (str[i] !== str[str.length - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
 }
 
 /**
@@ -264,8 +269,15 @@ function getIndexOf(str, letter) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  const str = String(num);
+  const digitStr = String(digit);
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === digitStr) {
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
@@ -306,8 +318,46 @@ function getBalanceIndex(/* arr */) {
  *          [10, 9,  8,  7]
  *        ]
  */
-function getSpiralMatrix(/* size */) {
-  throw new Error('Not implemented');
+function getSpiralMatrix(size) {
+  const arr = [];
+  let counter = 1;
+  let startCol = 0;
+  let startRow = 0;
+  let endRow = size - 1;
+  let endCol = size - 1;
+  for (let i = 0; i < size; i += 1) {
+    const arrInner = [];
+    for (let j = 0; j < size; j += 1) {
+      arrInner[j] = 0;
+    }
+    arr[i] = arrInner;
+  }
+
+  while (startCol <= endCol && startRow <= endRow) {
+    for (let i = startCol; i <= endCol; i += 1) {
+      arr[startRow][i] = counter;
+      counter += 1;
+    }
+    startRow += 1;
+
+    for (let i = startRow; i <= endRow; i += 1) {
+      arr[i][endCol] = counter;
+      counter += 1;
+    }
+    endCol -= 1;
+    for (let i = endCol; i >= startCol; i -= 1) {
+      arr[endRow][i] = counter;
+      counter += 1;
+    }
+    endRow -= 1;
+    for (let i = endRow; i >= startRow; i -= 1) {
+      arr[i][startCol] = counter;
+      counter += 1;
+    }
+    startCol += 1;
+  }
+
+  return arr;
 }
 
 /**
