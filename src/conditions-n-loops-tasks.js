@@ -397,20 +397,21 @@ function getSpiralMatrix(size) {
  */
 function rotateMatrix(matrix) {
   const n = matrix.length;
+  const result = matrix;
 
   for (let i = 0; i < n / 2; i += 1) {
     for (let j = 0; j < n; j += 1) {
       const buffer = matrix[i][j];
-      matrix[i][j] = matrix[n - 1 - i][j];
-      matrix[n - 1 - i][j] = buffer;
+      result[i][j] = matrix[n - 1 - i][j];
+      result[n - 1 - i][j] = buffer;
     }
   }
 
   for (let i = 0; i < n; i += 1) {
     for (let j = 0; j < i; j += 1) {
       const buffer = matrix[i][j];
-      matrix[i][j] = matrix[j][i];
-      matrix[j][i] = buffer;
+      result[i][j] = matrix[j][i];
+      result[j][i] = buffer;
     }
   }
 
